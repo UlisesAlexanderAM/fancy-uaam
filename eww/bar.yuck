@@ -1,0 +1,106 @@
+(defwindow bar :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "0%"
+                               :width "100%"
+                               :height "32px"
+                               :anchor "top center")
+           :stacking "fg"
+           :reserve (struts :distance "38px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+  (box :space-evenly false
+    (left)
+    (title)
+    (music)
+    (right)))
+
+;; Left module (tags and layout)
+
+(defwidget left []
+  (box :class "left" :halign "start" :space-evenly false :spacing 12
+    (tags)
+    (layout)))
+
+;; Left module (tags and layout)
+
+(defwidget tags []
+  (literal :content {wm-tags}))
+
+(defwidget layout []
+  (box :class "layout" :valign "center" {wm-layout}))
+
+
+(defwidget title []
+  (label :class "title"
+         :hexpand true
+         :limit-width 50
+         :wrap true
+         :text {window-title}))
+
+(defwidget music-icon []
+  (label :class "music-icon"
+         :text " "))
+
+(defwidget music []
+  (box :class "music"
+       :hexpand true
+       :space-evenly false
+       :halign "center"
+       (music-icon)
+       {music != "" ? "${music}" : ""}))
+
+(defwidget tray []
+  (box
+    :class "tray"
+    (literal :content "(box ${tray_icons})")
+  )
+)
+
+;; Right modules
+
+(defwidget right []
+  (box :class "right" :halign "end" :space-evenly false :spacing 12
+    (arch-updates)
+    (system-infos)
+    (system-menu)
+    (time)
+    (tray)))
+
+(defwidget arch-icon []
+  (label :class "arch-icon" :text ""))
+
+(defwidget arch-updates []
+  (box :class "arch-updates"
+       (arch-icon)
+       (label :text "arch: ${arch-updates}")
+       (label :text "aur: ${aur-updates}")))
+
+(defwidget system-infos []
+  (box :class "sys-infos" :space-evenly false :spacing 6
+    (metric :value {round(EWW_RAM.used_mem / EWW_RAM.total_mem, 3) * 100}
+            :label ""
+            :tooltip "${round(EWW_RAM.used_mem / EWW_RAM.total_mem, 3) * 100} %")
+    (label :text "${round(EWW_RAM.used_mem / EWW_RAM.total_mem, 2) * 100} %")
+    (metric :value { battery == "" ? 0 : battery }
+            :label ""
+            :tooltip "${battery}%")))
+
+(defwidget metric [label value tooltip]
+  (box :space-evenly false
+       :tooltip tooltip
+    (label :class "metric-label" :text label)
+    (circular-progress :value value
+              :start-at 0
+              :clockwise true
+              :thickness 8
+;;              :orientation "h"
+              :class "metric-progress")))
+(defwidget system-menu []
+  (button :class "rounded-grey-box-system-menu"
+          :onclick "./toggle_sysmenu.sh"
+    " 襤 "))
+
+(defwidget time []
+  (box :class "time" :orientation "h"
+    (box :class "hour" hour)
+    (box :class "date" date)))
