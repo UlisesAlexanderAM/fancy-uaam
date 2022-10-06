@@ -62,7 +62,6 @@
   (box :class "right" :halign "end" :space-evenly false :spacing 12
     (arch-updates)
     (system-infos)
-    (system-menu)
     (time)
     (tray)))
 
@@ -95,10 +94,6 @@
               :thickness 8
 ;;              :orientation "h"
               :class "metric-progress")))
-(defwidget system-menu []
-  (button :class "rounded-grey-box-system-menu"
-          :onclick "./toggle_sysmenu.sh"
-    " 襤 "))
 
 (defwidget time []
   (box :class "time" :orientation "h"
