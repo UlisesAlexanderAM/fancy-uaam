@@ -1,0 +1,3 @@
+* UAAM fancy leftwm theme
+
+This is a modified version of the [[github:arcolinux/arcolinux-leftwm-theme-fancy][arcolinux fancy leftwm theme]].
