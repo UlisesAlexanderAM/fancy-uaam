@@ -4,7 +4,7 @@
   "leftwm-state -w 0 -t ./layout.liquid")
 (deflisten window-title
   "leftwm-state -w 0 -t ./title.liquid")
-(deflisten music :initial ""
+(deflisten player_listen :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 (deflisten tray_icons :initial ""
   "eww-tray")

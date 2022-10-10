@@ -39,15 +39,16 @@
 
 (defwidget music-icon []
   (label :class "music-icon"
+         :valign "center"
          :text " "))
 
 (defwidget music []
   (box :class "music"
-       :hexpand true
+       :valign "center"
+       :halign "end"
        :space-evenly false
-       :halign "center"
        (music-icon)
-       {music != "" ? "${music}" : ""}))
+       (label :limit-width 50 :text {player_listen})))
 
 (defwidget tray []
   (box
@@ -66,10 +67,11 @@
     (tray)))
 
 (defwidget arch-icon []
-  (label :class "arch-icon" :text ""))
+  (label :class "arch-icon" :text " "))
 
 (defwidget arch-updates []
   (box :class "arch-updates"
+       :space-evenly false
        (arch-icon)
        (label :text "arch: ${arch-updates}")
        (label :text "aur: ${aur-updates}")))
@@ -78,7 +80,7 @@
   (box :class "sys-infos" :space-evenly false :spacing 6
     (metric :value {round(EWW_RAM.used_mem / EWW_RAM.total_mem, 3) * 100}
             :label ""
-            :tooltip "${round(EWW_RAM.used_mem / EWW_RAM.total_mem, 3) * 100} %")
+            :tooltip "${round(EWW_RAM.used_mem / EWW_RAM.total_mem, 3)} %")
     (label :text "${round(EWW_RAM.used_mem / EWW_RAM.total_mem, 2) * 100} %")
     (metric :value { battery == "" ? 0 : battery }
             :label ""
