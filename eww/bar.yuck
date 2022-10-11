@@ -71,7 +71,6 @@
 
 (defwidget arch-updates []
   (box :class "arch-updates"
-       :space-evenly false
        (arch-icon)
        (label :text "arch: ${arch-updates}")
        (label :text "aur: ${aur-updates}")))
