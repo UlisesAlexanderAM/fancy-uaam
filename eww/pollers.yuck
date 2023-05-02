@@ -6,5 +6,5 @@
   `cat /sys/class/power_supply/BAT0/status`)
 (defpoll arch-updates :interval "10s"
   `~/.config/leftwm/themes/fancy-uaam/scripts/check-arch-updates.sh`)
-(defpoll aur-updates :interval "10s"
+(defpoll aur-updates :interval "30m"
   `~/.config/leftwm/themes/fancy-uaam/scripts/check-aur-updates.sh`)

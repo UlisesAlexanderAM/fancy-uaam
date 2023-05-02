@@ -3,7 +3,7 @@
 }
 
 * {
-    font-family: "FiraGO";
+    font-family: "FiraGo";
 }
 
 $bg-color: #2e2e38;
@@ -30,23 +30,23 @@ $accent-color: #66bfff;
 /*    background-color: $box-color;*/
     border-radius: 4px;
     margin: 6px 0;
-    padding: 2px;
+    padding: 4px;
 }
 
 .rounded-grey-box-system-menu {
     border-radius: 2px;
     margin: 4px 0;
     padding: 0 6px;
-    font-size: 30px;
+    font-size: 26px;
 
 }
 
 .tag {
 /*    background-color: $box-color;*/
     margin: 4px 0;
-    padding: 0 3px;
-    font-size: 27px;
-    border-radius: 3px;
+    padding: 0 4px;
+    font-size: 22px;
+    border-radius: 2px;
 
     &.tag-focused,
     &.tag-visible {
